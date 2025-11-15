@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcjptc5h2hwgq"]
+
+[ext_resource type="Script" uid="uid://khl3x58hkcpc" path="res://ui/main_menu/main_menu.gd" id="1_r785l"]
+[ext_resource type="Texture2D" uid="uid://byukgpq4ekqs4" path="res://assets/textures/bg_black_and_white.png" id="2_3848r"]
+[ext_resource type="Script" uid="uid://dc4cmncgslry6" path="res://ui/main_menu/quickplay_connection_ui.gd" id="3_omy8q"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r785l")
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3848r")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Quickplay"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Exit"
+
+[node name="QuickplayConnectionUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_omy8q")
+
+[node name="ColorRect" type="ColorRect" parent="QuickplayConnectionUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.913725)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuickplayConnectionUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StatusLabel" type="Label" parent="QuickplayConnectionUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+
+[node name="CloseButton" type="Button" parent="QuickplayConnectionUI/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Close"
+
+[node name="QuitButton" type="Button" parent="QuickplayConnectionUI/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="QuickplayConnectionUI/VBoxContainer/CloseButton" to="QuickplayConnectionUI" method="_on_close_button_pressed"]
+[connection signal="pressed" from="QuickplayConnectionUI/VBoxContainer/QuitButton" to="QuickplayConnectionUI" method="_on_quit_button_pressed"]

@@ -1,0 +1,6 @@
+res://ui/main_menu/main_menu.tscn
+res://server/lobby.gd
+res://ui/main_menu/quickplay_connection_ui.gd
+res://server/server.gd
+res://game/main_game.tscn
+res://game/local_game_scene_manager.gd
