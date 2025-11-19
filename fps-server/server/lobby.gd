@@ -53,4 +53,24 @@ func c_lock_client():
 @rpc("authority", "call_remote", "reliable")
 func s_start_loading_map():
 	pass
+
+@rpc("authority", "call_remote", "reliable")
+func s_start_match():
+	pass
+
+@rpc("any_peer", "call_remote", "reliable")
+func c_map_ready():
+	var client_id := multiplayer.get_remote_sender_id()
 	
+	if client_id not in clients:
+		return
+	
+	if client_id not in ready_clients:
+		ready_clients.append(client_id)
+	
+	if ready_clients.size() != clients.size():
+		return
+	
+	for ready_client_id in ready_clients:
+		s_start_match.rpc_id(ready_client_id)
+	ready_clients.clear()

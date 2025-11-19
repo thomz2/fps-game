@@ -16,11 +16,16 @@ var is_sprinting := false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	set_processes(false)
 
 
 func _physics_process(delta: float) -> void:
 	move()
 
+func set_processes(enabled):
+	set_process(enabled)
+	set_physics_process(enabled)
+	set_process_input(enabled)
 
 func move():
 	if is_on_floor():
