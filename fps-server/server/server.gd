@@ -55,7 +55,7 @@ func on_client_removed_from_lobby(c_id, lobby):
 # =========== functions ===========
 func add_lobby(lobby: Lobby) -> Lobby:
 	lobbies.append(lobby)
-	lobby.name = "lobby_" + str(lobby.get_instance_id())
+	lobby.name = str(lobby.get_instance_id())
 	add_child(lobby)
 	update_lobby_spots()
 	return lobby

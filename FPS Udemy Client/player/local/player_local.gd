@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name PlayerLocal
 
 @export var normal_speed := 3.0
 @export var sprint_speed := 5.0
@@ -12,7 +12,7 @@ extends CharacterBody3D
 
 var is_grounded := true
 var is_sprinting := false
-
+var current_animation := "Idle_Shoot"
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -21,6 +21,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move()
+	update_animation()
+
+func update_animation():
+	if is_grounded and is_sprinting:
+		current_animation = "Run_Shoot"
+		return
+	
+	elif is_grounded and (velocity.x >=0 or velocity.z >= 0):
+		current_animation = "Walk_Shoot"
+		return
+		
+	if !is_grounded:
+		current_animation = "Jump"
+		return
+	
+	return "Idle_Shoot"
 
 func set_processes(enabled):
 	set_process(enabled)
