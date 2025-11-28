@@ -15,7 +15,7 @@ func get_remote_players() -> Dictionary:
 		if player_id == local_player_id:
 			continue
 		
-		var maybe_remote_player = players.get(player_id)
+		var maybe_remote_player: PlayerRemote = players.get(player_id)
 		if is_instance_valid(maybe_remote_player):
 			remote_players[player_id] = maybe_remote_player
 	
@@ -41,18 +41,19 @@ func send_player_state():
 
 func handle_world_state():
 	var remote_players := get_remote_players()
-	if !current_world_state["ps"]:
+	if current_world_state.is_empty() or not current_world_state.has("ps"):
 		return
 	
 	for player_id in current_world_state.ps.keys():
 		if player_id not in remote_players.keys():
 			continue
 		
-		var remote_player = remote_players.get(player_id)
+		var remote_player: PlayerRemote = remote_players.get(player_id)
 		var data: Dictionary = current_world_state["ps"][player_id]
 		remote_player.position = data["pos"]
 		remote_player.rotation.y = data["rot_y"]
 		#remote_player.head.rotation.x = data["rot_x"]
+		remote_player.set_anim(data["anim"])
 		
 func create_player_data(local_player: PlayerLocal):
 	return {

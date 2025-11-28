@@ -1,4 +1,6 @@
-[gd_scene load_steps=67 format=4 uid="uid://315hmxvfb4q4"]
+[gd_scene load_steps=68 format=4 uid="uid://315hmxvfb4q4"]
+
+[ext_resource type="Script" uid="uid://d4mp0jj0jq2nm" path="res://player/remote/player_remote.gd" id="1_55a7p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s7k6g"]
 radius = 0.25
@@ -2517,6 +2519,7 @@ tracks/34/keys = PackedFloat32Array(0, 1, -3.55273e-15, -5.96046e-07, 3.38813e-2
 [sub_resource type="Animation" id="Animation_j4j8v"]
 resource_name = "Idle"
 length = 1.66667
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -3263,6 +3266,7 @@ tracks/34/keys = PackedFloat32Array(0, 1, -3.55273e-15, -5.96046e-07, 3.38813e-2
 
 [sub_resource type="Animation" id="Animation_prqqs"]
 resource_name = "Jump_Idle"
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -4757,6 +4761,7 @@ tracks/34/keys = PackedFloat32Array(0, 1, -3.55273e-15, -5.96046e-07, 3.38813e-2
 [sub_resource type="Animation" id="Animation_bnxty"]
 resource_name = "Run_Shoot"
 length = 0.733333
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -5253,6 +5258,7 @@ tracks/34/keys = PackedFloat32Array(0, 1, -3.55273e-15, -5.96046e-07, 3.38813e-2
 
 [sub_resource type="Animation" id="Animation_eyswq"]
 resource_name = "Walk_Shoot"
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -6021,6 +6027,7 @@ _data = {
 [node name="PlayerRemote" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("1_55a7p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -6454,7 +6461,7 @@ bones/59/rotation = Quaternion(-3.55273e-15, -5.96046e-07, 3.38813e-21, 1)
 bones/59/scale = Vector3(1, 1, 1)
 
 [node name="Head_2" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.586174, 1.54812e-08, -1.41154e-08, -1.52463e-08, 0.58609, 0.00991702, 1.43482e-08, -0.00991702, 0.58609, -3.17232e-08, -0.115201, 0.143613)
+transform = Transform3D(0.586174, 1.54791e-08, -1.40863e-08, -1.52372e-08, 0.58609, 0.00991701, 1.43191e-08, -0.00991701, 0.58609, -3.17232e-08, -0.115201, 0.143613)
 bone_name = "Head_2"
 bone_idx = 8
 
@@ -6463,7 +6470,7 @@ mesh = SubResource("ArrayMesh_6qh0i")
 skeleton = NodePath("")
 
 [node name="ShoulderPad_L" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.387066, 0.439086, 0.0313509, -0.433709, 0.387532, -0.0729001, -0.0753341, 0.0249414, 0.580778, 0.368279, 1.18833, 0.0242412)
+transform = Transform3D(0.387066, 0.439086, 0.0313509, -0.433709, 0.387532, -0.0729001, -0.075334, 0.0249414, 0.580778, 0.368279, 1.18833, 0.0242413)
 bone_name = "ShoulderPad.L"
 bone_idx = 23
 
@@ -6472,7 +6479,7 @@ mesh = SubResource("ArrayMesh_lkk3s")
 skeleton = NodePath("")
 
 [node name="AK" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(-0.0254767, 0.276528, -0.312304, -0.199502, 0.266703, 0.252426, 0.366334, 0.164475, 0.115749, -0.357581, 0.725184, 0.516471)
+transform = Transform3D(-0.0254768, 0.276528, -0.312304, -0.199502, 0.266703, 0.252426, 0.366334, 0.164475, 0.115749, -0.357581, 0.725184, 0.516471)
 visible = false
 bone_name = "AK"
 bone_idx = 36
@@ -6482,7 +6489,7 @@ mesh = SubResource("ArrayMesh_4nl3q")
 skeleton = NodePath("")
 
 [node name="GrenadeLauncher" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.0225854, -0.669821, 0.742179, 0.453569, 0.668436, 0.589464, -0.890935, 0.323316, 0.318907, -0.244967, 0.653893, 0.883758)
+transform = Transform3D(0.0225856, -0.669821, 0.74218, 0.453569, 0.668436, 0.589464, -0.890935, 0.323316, 0.318907, -0.244967, 0.653893, 0.883758)
 visible = false
 bone_name = "GrenadeLauncher"
 bone_idx = 37
@@ -6492,7 +6499,7 @@ mesh = SubResource("ArrayMesh_pvwyi")
 skeleton = NodePath("")
 
 [node name="Knife_1" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.0221915, 0.14468, 0.110366, 0.094157, 0.0860129, -0.131688, -0.155716, 0.0726283, -0.0638994, -0.404259, 0.68888, 0.511411)
+transform = Transform3D(0.0221916, 0.14468, 0.110366, 0.094157, 0.0860128, -0.131688, -0.155716, 0.0726283, -0.0638994, -0.404259, 0.68888, 0.511411)
 visible = false
 bone_name = "Knife_1"
 bone_idx = 38
@@ -6502,7 +6509,7 @@ mesh = SubResource("ArrayMesh_yvjg0")
 skeleton = NodePath("")
 
 [node name="Knife_2" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.010974, 0.143136, 0.100393, 0.0836669, 0.0840247, -0.128945, -0.153514, 0.0560267, -0.0630998, -0.38897, 0.707337, 0.522648)
+transform = Transform3D(0.0109741, 0.143136, 0.100393, 0.0836669, 0.0840247, -0.128945, -0.153514, 0.0560267, -0.0630998, -0.38897, 0.707337, 0.522648)
 visible = false
 bone_name = "Knife_2"
 bone_idx = 39
@@ -6512,7 +6519,7 @@ mesh = SubResource("ArrayMesh_qkbj6")
 skeleton = NodePath("")
 
 [node name="Pistol" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(-0.0113256, 0.0693131, -0.0815814, -0.0560507, 0.0660532, 0.0639013, 0.0912038, 0.0492013, 0.0291409, -0.353596, 0.731686, 0.501204)
+transform = Transform3D(-0.0113256, 0.0693131, -0.0815813, -0.0560507, 0.0660532, 0.0639013, 0.0912038, 0.0492012, 0.0291409, -0.353596, 0.731687, 0.501204)
 visible = false
 bone_name = "Pistol"
 bone_idx = 40
@@ -6532,7 +6539,7 @@ mesh = SubResource("ArrayMesh_ollmi")
 skeleton = NodePath("")
 
 [node name="Revolver_Small" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(-0.0202478, 0.0667864, -0.0797532, -0.0590432, 0.0521311, 0.0691913, 0.0797835, 0.0555286, 0.0309645, -0.337596, 0.742539, 0.505533)
+transform = Transform3D(-0.0202478, 0.0667864, -0.0797532, -0.0590432, 0.052131, 0.0691914, 0.0797835, 0.0555286, 0.0309645, -0.337596, 0.742539, 0.505533)
 visible = false
 bone_name = "Revolver_Small"
 bone_idx = 42
@@ -6542,7 +6549,7 @@ mesh = SubResource("ArrayMesh_7l503")
 skeleton = NodePath("")
 
 [node name="RocketLauncher" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(-0.0129476, 0.138157, -0.15318, -0.0987159, 0.130616, 0.12615, 0.181126, 0.0810633, 0.0578033, -0.35664, 0.707664, 0.515638)
+transform = Transform3D(-0.0129477, 0.138157, -0.15318, -0.0987159, 0.130616, 0.12615, 0.181126, 0.0810633, 0.0578033, -0.356641, 0.707664, 0.515638)
 visible = false
 bone_name = "RocketLauncher"
 bone_idx = 43
@@ -6552,7 +6559,7 @@ mesh = SubResource("ArrayMesh_25ofx")
 skeleton = NodePath("")
 
 [node name="ShortCannon" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.0512442, 0.16182, -0.166943, -0.0419569, 0.17458, 0.156343, 0.228682, -0.00423082, 0.0660942, -0.321164, 0.732301, 0.563084)
+transform = Transform3D(0.0512442, 0.16182, -0.166943, -0.0419569, 0.17458, 0.156343, 0.228682, -0.00423083, 0.0660943, -0.321164, 0.732301, 0.563084)
 visible = false
 bone_name = "ShortCannon"
 bone_idx = 44
@@ -6562,7 +6569,7 @@ mesh = SubResource("ArrayMesh_a0wpm")
 skeleton = NodePath("")
 
 [node name="Shotgun" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(-0.210819, -0.690989, 0.69144, 0.206224, 0.659979, 0.722426, -0.955525, 0.294893, 0.00336281, -0.29796, 0.737542, 0.55023)
+transform = Transform3D(-0.210819, -0.690989, 0.69144, 0.206224, 0.659979, 0.722426, -0.955525, 0.294893, 0.00336276, -0.29796, 0.737543, 0.55023)
 visible = false
 bone_name = "Shotgun"
 bone_idx = 45
@@ -6572,7 +6579,7 @@ mesh = SubResource("ArrayMesh_xiscf")
 skeleton = NodePath("")
 
 [node name="Shovel" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(-0.0447211, -0.648792, 0.471152, -0.35423, -0.396088, -0.584685, 0.652037, -0.25968, -0.285325, -0.335008, 0.72417, 0.53544)
+transform = Transform3D(-0.0447212, -0.648792, 0.471152, -0.35423, -0.396088, -0.584685, 0.652037, -0.25968, -0.285325, -0.335008, 0.72417, 0.53544)
 visible = false
 bone_name = "Shovel"
 bone_idx = 46
@@ -6582,7 +6589,7 @@ mesh = SubResource("ArrayMesh_mijpt")
 skeleton = NodePath("")
 
 [node name="SMG" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.0673242, -0.681444, 0.728767, 0.480569, 0.66226, 0.574861, -0.874369, 0.311521, 0.372067, -0.339771, 0.732436, 0.506911)
+transform = Transform3D(0.0673244, -0.681444, 0.728767, 0.480569, 0.66226, 0.57486, -0.874369, 0.311521, 0.372067, -0.339771, 0.732436, 0.506911)
 visible = false
 bone_name = "SMG"
 bone_idx = 47
@@ -6592,7 +6599,7 @@ mesh = SubResource("ArrayMesh_rjb2q")
 skeleton = NodePath("")
 
 [node name="Sniper" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.00840332, 0.157927, -0.144004, -0.0812985, 0.135643, 0.144014, 0.197657, 0.0490773, 0.0653565, -0.352633, 0.727713, 0.527047)
+transform = Transform3D(0.00840329, 0.157927, -0.144004, -0.0812985, 0.135643, 0.144014, 0.197657, 0.0490773, 0.0653565, -0.352633, 0.727713, 0.527047)
 visible = false
 bone_name = "Sniper"
 bone_idx = 48
@@ -6602,7 +6609,7 @@ mesh = SubResource("ArrayMesh_4dwp7")
 skeleton = NodePath("")
 
 [node name="Sniper_2" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.0574184, -0.689885, 0.600735, 0.437771, 0.549241, 0.588907, -0.803231, 0.250027, 0.363905, -0.329915, 0.765779, 0.550502)
+transform = Transform3D(0.0574185, -0.689885, 0.600735, 0.437771, 0.549241, 0.588907, -0.803231, 0.250027, 0.363905, -0.329916, 0.765779, 0.550501)
 visible = false
 bone_name = "Sniper_2"
 bone_idx = 49
@@ -6612,7 +6619,7 @@ mesh = SubResource("ArrayMesh_e55ok")
 skeleton = NodePath("")
 
 [node name="ShoulderPad_R" type="BoneAttachment3D" parent="character_soldier/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.387066, -0.439086, -0.031351, 0.433709, 0.387532, -0.0729002, 0.0753342, 0.0249414, 0.580778, -0.368279, 1.18833, 0.0242412)
+transform = Transform3D(0.387066, -0.439086, -0.0313511, 0.433709, 0.387532, -0.0729003, 0.0753343, 0.0249414, 0.580778, -0.368279, 1.18833, 0.0242412)
 bone_name = "ShoulderPad.R"
 bone_idx = 52
 
@@ -6625,6 +6632,8 @@ mesh = SubResource("ArrayMesh_xbvh6")
 skin = SubResource("Skin_3n437")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="character_soldier"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_wdbfl")
 }
+autoplay = "Idle"

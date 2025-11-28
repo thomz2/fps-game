@@ -10,3 +10,4 @@ res://player/spawn_point/player_spawn_point_arrow.tscn
 res://maps/server_map_farm.tscn
 res://maps/map_farm.tscn
 res://player/remote/player_remote.tscn
+res://server/lobby.gd

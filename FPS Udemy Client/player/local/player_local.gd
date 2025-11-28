@@ -1,6 +1,11 @@
 extends CharacterBody3D
 class_name PlayerLocal
 
+const IDLE_ANIM := "Idle"
+const AIR_ANIM := "Jump_Idle"
+const WALK_ANIM := "Walk_Shoot"
+const RUN_ANIM := "Run_Shoot"
+
 @export var normal_speed := 3.0
 @export var sprint_speed := 5.0
 @export var jump_velocity := 4.0
@@ -24,19 +29,16 @@ func _physics_process(delta: float) -> void:
 	update_animation()
 
 func update_animation():
-	if is_grounded and is_sprinting:
-		current_animation = "Run_Shoot"
-		return
-	
-	elif is_grounded and (velocity.x >=0 or velocity.z >= 0):
-		current_animation = "Walk_Shoot"
+	if is_grounded and (velocity.x != 0 or velocity.z != 0):
+		current_animation = WALK_ANIM if !is_sprinting else RUN_ANIM 
 		return
 		
 	if !is_grounded:
-		current_animation = "Jump"
+		current_animation = AIR_ANIM
 		return
 	
-	return "Idle_Shoot"
+	current_animation = IDLE_ANIM
+	return 
 
 func set_processes(enabled):
 	set_process(enabled)
