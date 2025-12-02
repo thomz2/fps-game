@@ -32,6 +32,19 @@ func _on_connection_failed():
 func try_connect_client_to_lobby():
 	# O server sempre terá peer_id = 1
 	c_try_connect_client_to_lobby.rpc_id(1)
+	
+func start_single_player():
+	var offline_peer := OfflineMultiplayerPeer.new()
+	multiplayer.multiplayer_peer = offline_peer
+	
+	# Simulando a lógica do servidor:
+	var nm_lobby := "LobbyOffline1Jogador"
+	s_create_lobby_on_clients(nm_lobby)
+	
+	var lobby: Lobby = get_node(nm_lobby)
+	if lobby:
+		lobby.setup_offline_match()
+
 
 # Por regra temos que deixar a função definida no outro projeto aqui também, mas a lógica fica lá
 @rpc("any_peer", "call_remote", "reliable")
@@ -52,7 +65,8 @@ func c_quit_wait_on_lobby():
 	pass
 
 # Pode ser confuso a ideia de criar um lobby para cada cliente, porém o que estamos criando é o objeto
-# lobby e não o lobby em si, tanto que o lobby em si é definido pelo name dele
+# lobby e não o lobby em si, tanto que o lobby em si é definido pelo name dele;
+# Vale ressaltar que o server só chama essa funcao quando todos os clientes estiverem prontos.
 @rpc("authority", "call_remote", "reliable")
 func s_create_lobby_on_clients(lobby_name):
 	var lobby := Lobby.new()

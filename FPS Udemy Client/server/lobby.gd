@@ -23,6 +23,11 @@ func get_remote_players() -> Dictionary:
 
 # Quando o OBJETO lobby é criado na parte do cliente, avisa ao servidor que o cliente está lockado
 func _ready():
+	
+	if multiplayer.multiplayer_peer is OfflineMultiplayerPeer:
+		print("Jogador no lobby offline")
+		return
+	
 	c_lock_client.rpc_id(1)
 	print("comunicação de lock enviada")
 	set_physics_process(false)
@@ -45,6 +50,7 @@ func handle_world_state():
 		return
 	
 	for player_id in current_world_state.ps.keys():
+		# Se o jogo estiver offline, essa funcao não irá rodar, por conta do if abaixo:
 		if player_id not in remote_players.keys():
 			continue
 		
@@ -66,6 +72,13 @@ func create_player_data(local_player: PlayerLocal):
 
 func map_ready():
 	c_map_ready.rpc_id(1)
+
+# Basicamente vamos chamar as funcoes que o servidor chama
+func setup_offline_match():
+	s_start_loading_map()
+	var spawn_points : Array = get_tree().get_nodes_in_group("SpawnPoints")
+	s_spawn_player(1, spawn_points[0].transform, 1)
+	s_start_match()
 
 @rpc("any_peer", "call_remote", "reliable")
 func c_map_ready():
@@ -92,6 +105,7 @@ func s_start_match():
 func s_spawn_player(client_id: int, spawn_tform: Transform3D, team: int):
 	var player
 		
+	# No offline, id é 1, então isso vai instanciar o PlayerLocal corretamente
 	if client_id == multiplayer.get_unique_id():
 		player = preload("res://player/local/player_local.tscn").instantiate()
 	else:

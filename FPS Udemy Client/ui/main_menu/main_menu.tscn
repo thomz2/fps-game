@@ -48,7 +48,15 @@ size_flags_horizontal = 4
 focus_mode = 0
 text = "Exit"
 
+[node name="PlayOfflineButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Jogar Off"
+
 [node name="QuickplayConnectionUI" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,5 +104,6 @@ text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayOfflineButton" to="." method="_on_play_offline_button_pressed"]
 [connection signal="pressed" from="QuickplayConnectionUI/VBoxContainer/CloseButton" to="QuickplayConnectionUI" method="_on_close_button_pressed"]
 [connection signal="pressed" from="QuickplayConnectionUI/VBoxContainer/QuitButton" to="QuickplayConnectionUI" method="_on_quit_button_pressed"]
