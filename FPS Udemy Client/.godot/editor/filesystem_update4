@@ -13,3 +13,4 @@ res://game/main_game.tscn
 res://player/local/player_local.tscn
 res://player/spawn_point/player_spawn_point_arrow.tscn
 res://player/remote/player_remote.tscn
+res://player/local/player_local.gd

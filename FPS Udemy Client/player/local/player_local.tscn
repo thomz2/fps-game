@@ -22,3 +22,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="HUD" parent="." instance=ExtResource("3_w115m")]
+
+[node name="WallCheckRight" type="RayCast3D" parent="."]
+target_position = Vector3(1, 0, 0)
+
+[node name="WallCheckLeft" type="RayCast3D" parent="."]
+target_position = Vector3(-1, 0, 0)
